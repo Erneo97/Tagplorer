@@ -11,31 +11,43 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) {
         String testDir = System.getenv("testDir").replace('\'', ' ').trim();
-        System.out.println("Test dir path: " + testDir);
 
-        System.out.println("Pliki/katalogi w wskazanym folderze");
-        Path pathDadDir = Paths.get(testDir);
-        System.out.println("getFileName: " + pathDadDir.getFileName());
-        System.out.println("getRoot: " + pathDadDir.getRoot());
-        System.out.println("getParent: " + pathDadDir.getParent());
-
-        System.out.println("getNameCount: " + pathDadDir.getNameCount());
-        for (int i = 0; i < pathDadDir.getNameCount(); i++) {
-            System.out.println("\t" + pathDadDir.getName(i));
+        DirectoryScribe scribe = new DirectoryScribe( Paths.get(testDir));
+        try {
+            scribe.makeList();
+            for(FileInformation record : scribe.getDirectoryList() ) {
+                System.out.println(record);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        System.out.println();
 
-        try(Stream<Path> subPaths = Files.walk(pathDadDir)) {
-            subPaths.forEach(path -> {
-                FileInformation fi  = new FileInformation(path);
-                System.out.println(fi);
-            });
-
-
-        }
-        catch ( IOException e) {
-            e.printStackTrace();
-        }
+//        System.out.println("Test dir path: " + testDir);
+//
+//        System.out.println("Pliki/katalogi w wskazanym folderze");
+//        Path pathDadDir = Paths.get(testDir);
+//        System.out.println("getFileName: " + pathDadDir.getFileName());
+//        System.out.println("getRoot: " + pathDadDir.getRoot());
+//        System.out.println("getParent: " + pathDadDir.getParent());
+//
+//
+//        System.out.println("getNameCount: " + pathDadDir.getNameCount());
+//        for (int i = 0; i < pathDadDir.getNameCount(); i++) {
+//            System.out.println("\t" + pathDadDir.getName(i));
+//        }
+//        System.out.println();
+//
+//        try(Stream<Path> subPaths = Files.walk(pathDadDir)) {
+//            subPaths.forEach(path -> {
+//                FileInformation fi  = new FileInformation(path);
+//                System.out.println(fi);
+//            });
+//
+//
+//        }
+//        catch ( IOException e) {
+//            e.printStackTrace();
+//        }
 
 //        try {
 //            WatchService watchService = FileSystems.getDefault().newWatchService();
