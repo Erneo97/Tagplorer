@@ -1,3 +1,5 @@
+package com.example;
+
 public enum ExpandedWatchEventsKids {
     ENTRY_CREATE,
     ENTRY_DELETE,
