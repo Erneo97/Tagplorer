@@ -1,4 +1,4 @@
-package com.example.fileSubscriber;
+package com.example.fileObserver;
 
 import java.util.ArrayList;
 import java.util.List;

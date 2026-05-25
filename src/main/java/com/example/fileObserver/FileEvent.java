@@ -1,4 +1,4 @@
-package com.example.fileSubscriber;
+package com.example.fileObserver;
 
 import java.nio.file.Path;
 

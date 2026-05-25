@@ -1,4 +1,4 @@
-package com.example.fileSubscriber;
+package com.example.fileObserver;
 
 public enum ExpandedWatchEventsKids {
     ENTRY_CREATE,
