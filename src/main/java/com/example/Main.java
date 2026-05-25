@@ -49,6 +49,18 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
+        try {
+            System.out.println("dirWatcher - startuje");
+            DirectoryWatcher dirWatcher = new DirectoryWatcher( Paths.get(testDir) );
+            Thread test = new Thread( dirWatcher);
+            test.start();
+
+            System.out.println("dirWatcher - uruchomiony");
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 //        try {
 //            WatchService watchService = FileSystems.getDefault().newWatchService();
 //
