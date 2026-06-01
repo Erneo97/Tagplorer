@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * Create complete list of directories and files, including subdirectories.
+ *
+ */
 public class DirectoryScribe {
     private final Path path;
     private List<FileInformation> directoryList;
