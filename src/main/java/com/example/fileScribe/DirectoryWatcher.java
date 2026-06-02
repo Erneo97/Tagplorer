@@ -1,8 +1,8 @@
-package com.example;
+package com.example.fileScribe;
 
-import com.example.fileObserver.ExpandedWatchEventsKids;
-import com.example.fileObserver.FileEvent;
-import com.example.fileObserver.FileEventPublisher;
+import com.example.fileScribe.fileObserver.ExpandedWatchEventsKids;
+import com.example.fileScribe.fileObserver.FileEvent;
+import com.example.fileScribe.fileObserver.FileEventPublisher;
 
 import java.io.File;
 import java.io.IOException;

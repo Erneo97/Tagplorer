@@ -1,4 +1,4 @@
-package com.example.fileObserver;
+package com.example.fileScribe.fileObserver;
 
 import java.nio.file.Path;
 import java.time.LocalTime;

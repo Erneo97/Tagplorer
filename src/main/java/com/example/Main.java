@@ -1,6 +1,9 @@
 package com.example;
 
-import com.example.fileObserver.FileEventPublisher;
+import com.example.fileScribe.fileObserver.FileEventPublisher;
+import com.example.fileScribe.DirectoryScribe;
+import com.example.fileScribe.DirectoryWatcher;
+import com.example.fileScribe.FileInformation;
 
 import java.io.IOException;
 import java.nio.file.*;

@@ -1,4 +1,4 @@
-package com.example;
+package com.example.fileScribe;
 
 import java.io.IOException;
 import java.nio.file.Files;
