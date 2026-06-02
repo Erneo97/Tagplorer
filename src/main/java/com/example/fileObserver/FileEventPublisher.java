@@ -15,8 +15,8 @@ public class FileEventPublisher {
     }
 
     public void publish(FileEvent event) {
-        for( FileEventListener listener : listeners ) {
-            listener.onFileEvent( event);
+        for (FileEventListener listener : listeners) {
+            listener.onFileEvent(event);
         }
     }
 }

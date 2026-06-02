@@ -8,14 +8,15 @@ import java.nio.file.*;
 
 public class Main {
     Character sd;
+
     public static void main(String[] args) {
         String testDir = System.getenv("testDir").replace('\'', ' ').trim();
         Path testPath = Paths.get(testDir);
 
-        DirectoryScribe scribe = new DirectoryScribe( testPath );
+        DirectoryScribe scribe = new DirectoryScribe(testPath);
         try {
             scribe.makeList();
-            for(FileInformation record : scribe.getDirectoryList() ) {
+            for (FileInformation record : scribe.getDirectoryList()) {
                 System.out.println(record);
             }
         } catch (IOException e) {
@@ -27,8 +28,8 @@ public class Main {
 
         try {
             System.out.println("dirWatcher - startuje");
-            DirectoryWatcher dirWatcher = new DirectoryWatcher( testPath, filePublisher );
-            Thread test = new Thread( dirWatcher);
+            DirectoryWatcher dirWatcher = new DirectoryWatcher(testPath, filePublisher);
+            Thread test = new Thread(dirWatcher);
             test.start();
             System.out.println("dirWatcher - uruchomiony");
 

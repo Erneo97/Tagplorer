@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class DirectoryWatcher implements Runnable{
+public class DirectoryWatcher implements Runnable {
     private final Path path;
     private final AtomicBoolean run;
     private final FileEventPublisher publisher;
@@ -22,20 +22,20 @@ public class DirectoryWatcher implements Runnable{
     public DirectoryWatcher(Path path, FileEventPublisher publisher) throws IOException {
         this.path = path;
         run = new AtomicBoolean(true);
-        watchService =  FileSystems.getDefault().newWatchService();
+        watchService = FileSystems.getDefault().newWatchService();
         this.publisher = publisher;
 
         path.register(watchService,
-                    StandardWatchEventKinds.ENTRY_CREATE,
-                    StandardWatchEventKinds.ENTRY_DELETE,
-                    StandardWatchEventKinds.ENTRY_MODIFY
-            );
+                StandardWatchEventKinds.ENTRY_CREATE,
+                StandardWatchEventKinds.ENTRY_DELETE,
+                StandardWatchEventKinds.ENTRY_MODIFY
+        );
     }
 
     @Override
     public void run() {
         WatchKey key;
-        while (run.get() ) {
+        while (run.get()) {
             try {
                 if ((key = watchService.take()) != null) {
                     for (WatchEvent<?> event : key.pollEvents()) {
@@ -44,10 +44,10 @@ public class DirectoryWatcher implements Runnable{
 
                         System.out.println(kind.name() + " - '" + path + "'  " + LocalTime.now().format(DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM)));
                         File file = this.path.resolve(path).toFile();
-                        System.out.println("\t" + file.getAbsolutePath() + "   " + file.isDirectory() + "   " + file.isFile() + "   " );
+                        System.out.println("\t" + file.getAbsolutePath() + "   " + file.isDirectory() + "   " + file.isFile() + "   ");
 
                         FileEvent newEvent = new FileEvent(
-                                ExpandedWatchEventsKids.valueOf( kind.name()),
+                                ExpandedWatchEventsKids.valueOf(kind.name()),
                                 path,
                                 LocalTime.now()
                         );
@@ -63,7 +63,7 @@ public class DirectoryWatcher implements Runnable{
         }
     }
 
-    public void stopWathing( ) {
+    public void stopWathing() {
         run.set(false);
     }
 }

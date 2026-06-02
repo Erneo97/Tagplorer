@@ -35,14 +35,33 @@ public class FileInformation implements Serializable {
 
     }
 
-    public Boolean isDirectory() { return directory; }
-    public Boolean isFile() { return file; }
-    public Path getPath() { return Paths.get(path); }
-    public String getName() {return name; }
+    public Boolean isDirectory() {
+        return directory;
+    }
 
-    public long getSize() {return size; }
-    public FileTime getModifedTime() {return modifedTime; }
-    public FileTime getCreatedTime() {return createdTime; }
+    public Boolean isFile() {
+        return file;
+    }
+
+    public Path getPath() {
+        return Paths.get(path);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    public FileTime getModifedTime() {
+        return modifedTime;
+    }
+
+    public FileTime getCreatedTime() {
+        return createdTime;
+    }
 
 
     @Override
@@ -58,7 +77,7 @@ public class FileInformation implements Serializable {
                 ", createdTime=" + createdTime;
     }
 
-    private int countPathSlash( ) {
+    private int countPathSlash() {
         int count = 0;
         for (int i = 0; i < this.path.length(); i++) {
             if (this.path.charAt(i) == '\\') {
